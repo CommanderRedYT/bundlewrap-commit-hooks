@@ -40,7 +40,7 @@ $ git commit -m "Refactor structure"
 default_install_hook_types: [..., prepare-commit-msg]
 repos:
   - repo: https://github.com/CommanderRedYT/bundlewrap-commit-hooks
-    rev: main
+    rev: v1.0.0
     hooks:
       - id: prefix-commit
 ```
