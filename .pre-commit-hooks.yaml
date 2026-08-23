@@ -1,0 +1,7 @@
+- id: prefix-commit
+  name: Prefix commit based on paths modified
+  description: 'If files in bundles/ are touched, commit message will be prefixed with "bundles: "'
+  entry: prefix-commit
+  language: python
+  stages:
+    - prepare-commit-msg
