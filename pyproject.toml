@@ -4,8 +4,20 @@ version = "0.1.0"
 description = "Commit hooks for pre-commit."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
 license = "GPL-3.0-or-later"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+]
 
 [project.scripts]
 prefix-commit = "bundlewrap_commit_hooks.prefix_commit:main"
+
+[tool.pytest]
+minversion = "9.0"
+addopts = ["-ra", "-q", "--strict"]
+testpaths = [
+    "tests"
+]

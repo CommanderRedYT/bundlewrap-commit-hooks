@@ -84,6 +84,15 @@ def generate_prefix(directory: str | None) -> str | None:
     return None
 
 
+def get_prefix_from_files(staged_files: list[str]) -> str | None:
+    common_dir = find_common_directory(staged_files)
+
+    # Generate prefix
+    prefix = generate_prefix(common_dir)
+
+    return prefix
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description='Prefix commit message based on staged file paths'
@@ -112,10 +121,8 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     # Get staged files and find common directory
     staged_files = get_staged_files()
-    common_dir = find_common_directory(staged_files)
 
-    # Generate prefix
-    prefix = generate_prefix(common_dir)
+    prefix = get_prefix_from_files(staged_files)
 
     # If we have a prefix, prepend it to the commit message
     if prefix:
