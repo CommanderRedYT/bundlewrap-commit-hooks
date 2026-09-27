@@ -9,6 +9,7 @@ MAGIC_BUNDLEWRAP_DIRECTORIES = [
     'nodes',
     'groups',
     'items',
+    'libs',
 ]
 
 def get_staged_files() -> list[str]: # pragma: no cover

@@ -106,6 +106,14 @@ def test_item_single_file_changed():
 
     assert prefix == 'items/my_awesome_item: '
 
+def test_libs_single_file_changed():
+    CHANGED_FILES = [
+        'libs/tools.py'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'libs/tools: '
 
 def test_data_single_file_changed():
     CHANGED_FILES = [
