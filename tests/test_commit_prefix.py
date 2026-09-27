@@ -38,9 +38,19 @@ def test_multiple_bundles_and_root_files_changed():
     assert prefix == 'bw: '
 
 
-def test_root_files_changed():
+def test_root_single_file_changed():
     CHANGED_FILES = [
         'README.md'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'bw: '
+
+def test_root_multiple_files_changed():
+    CHANGED_FILES = [
+        'README.md',
+        '.gitignore'
     ]
 
     prefix = get_prefix_from_files(CHANGED_FILES)
@@ -67,3 +77,41 @@ def test_single_file_changed():
     prefix = get_prefix_from_files(CHANGED_FILES)
 
     assert prefix == 'docs: '
+
+def test_node_single_file_changed():
+    CHANGED_FILES = [
+        'nodes/my_awesome_node.toml'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'nodes/my_awesome_node: '
+
+def test_group_single_file_changed():
+    CHANGED_FILES = [
+        'groups/my_awesome_group.toml'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'groups/my_awesome_group: '
+
+
+def test_item_single_file_changed():
+    CHANGED_FILES = [
+        'items/my_awesome_item.py'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'items/my_awesome_item: '
+
+
+def test_data_single_file_changed():
+    CHANGED_FILES = [
+        'data/my_awesome_file.txt'
+    ]
+
+    prefix = get_prefix_from_files(CHANGED_FILES)
+
+    assert prefix == 'data: '

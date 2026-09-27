@@ -5,6 +5,11 @@ import subprocess
 from collections.abc import Sequence
 from pathlib import Path
 
+MAGIC_BUNDLEWRAP_DIRECTORIES = [
+    'nodes',
+    'groups',
+    'items',
+]
 
 def get_staged_files() -> list[str]: # pragma: no cover
     """Get list of staged files from git."""
@@ -52,7 +57,11 @@ def find_common_directory(files: list[str]) -> str | None:
         # If it's just a root-level file, return None
         if len(parts) <= 1:
             return None
-        return str(Path(*parts[:-1]))
+
+        if parts[0] in MAGIC_BUNDLEWRAP_DIRECTORIES:
+            return str(Path(*parts[:-1], Path(parts[-1]).stem))
+        else:
+            return str(Path(*parts[:-1]))
 
     # Find common prefix across all file paths (excluding filename)
     all_dirs = [parts[:-1] for parts in valid_files]  # Remove filename from each
