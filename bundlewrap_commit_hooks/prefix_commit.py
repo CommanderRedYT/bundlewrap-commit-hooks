@@ -6,7 +6,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 
-def get_staged_files() -> list[str]:
+def get_staged_files() -> list[str]: # pragma: no cover
     """Get list of staged files from git."""
     try:
         result = subprocess.run(
@@ -93,7 +93,7 @@ def get_prefix_from_files(staged_files: list[str]) -> str | None:
     return prefix
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int: # pragma: no cover
     parser = argparse.ArgumentParser(
         description='Prefix commit message based on staged file paths'
     )
@@ -132,5 +132,5 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     raise SystemExit(main())
