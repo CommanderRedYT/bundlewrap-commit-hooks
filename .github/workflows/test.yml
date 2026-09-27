@@ -28,12 +28,13 @@ jobs:
 
       - name: Run tests
         # For example, using `pytest`
-        run: uv run pytest \
-          --cov=bundlewrap_commit_hooks \
-          --cov-report=term-missing \
-          --cov-report=xml:coverage.xml \
-          --cov-fail-under=100 \
-          --junitxml=test-results/pytest.xml
+        run: |
+          uv run pytest \
+            --cov=bundlewrap_commit_hooks \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml \
+            --cov-fail-under=100 \
+            --junitxml=test-results/pytest.xml
 
       - name: Upload test reports
         if: ${{ always() }}
