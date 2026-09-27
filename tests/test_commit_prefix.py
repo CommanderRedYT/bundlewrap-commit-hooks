@@ -1,5 +1,6 @@
 from bundlewrap_commit_hooks.prefix_commit import find_common_directory, get_prefix_from_files
 
+
 def test_single_bundle():
     CHANGED_FILES = [
         'bundles/xyz/items.py',
@@ -11,6 +12,7 @@ def test_single_bundle():
 
     assert prefix == 'bundles/xyz: '
 
+
 def test_multiple_bundles():
     CHANGED_FILES = [
         'bundles/bundle1/items.py',
@@ -21,6 +23,7 @@ def test_multiple_bundles():
     prefix = get_prefix_from_files(CHANGED_FILES)
 
     assert prefix == 'bundles: '
+
 
 def test_multiple_bundles_and_root_files_changed():
     CHANGED_FILES = [
@@ -34,6 +37,7 @@ def test_multiple_bundles_and_root_files_changed():
 
     assert prefix == 'bw: '
 
+
 def test_root_files_changed():
     CHANGED_FILES = [
         'README.md'
@@ -42,6 +46,7 @@ def test_root_files_changed():
     prefix = get_prefix_from_files(CHANGED_FILES)
 
     assert prefix == 'bw: '
+
 
 def test_invalid_files_passed():
     CHANGED_FILES = [
@@ -52,6 +57,7 @@ def test_invalid_files_passed():
     common_directory = find_common_directory(CHANGED_FILES)
 
     assert common_directory is None
+
 
 def test_single_file_changed():
     CHANGED_FILES = [
