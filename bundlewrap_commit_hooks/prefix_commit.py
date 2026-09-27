@@ -81,7 +81,7 @@ def generate_prefix(directory: str | None) -> str | None:
     """
     if directory:
         return f'{directory}: '
-    return None
+    return 'bw: '
 
 
 def get_prefix_from_files(staged_files: list[str]) -> str | None:
