@@ -29,12 +29,12 @@ jobs:
       - name: Run tests
         # For example, using `pytest`
         run: uv run pytest \
-            --cov=shop \
-            --cov-branch \
-            --cov-report=term-missing \
-            --cov-report=xml:coverage.xml \
-            --cov-fail-under=100 \
-            --junitxml=test-results/pytest.xml
+          --cov=shop \
+          --cov-branch \
+          --cov-report=term-missing \
+          --cov-report=xml:coverage.xml \
+          --cov-fail-under=100 \
+          --junitxml=test-results/pytest.xml
 
       - name: Upload test reports
         if: ${{ always() }}
